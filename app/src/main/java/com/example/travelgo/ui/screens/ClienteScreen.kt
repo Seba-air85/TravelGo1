@@ -4,6 +4,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 
 @Composable
-fun PaquetesScreen() {
-    Text(text = "Pantalla de Paquetes")
+fun ClienteScreen() {
+    Text(text = "Pantalla del Cliente")
 }

@@ -19,20 +19,20 @@ import androidx.navigation.compose.rememberNavController
 import com.example.travelgo.ui.screens.HomeScreen
 import androidx.navigation.NavController
 import androidx.compose.material3.Button
-import com.example.travelgo.ui.screens.PaquetesScreen
-import com.example.travelgo.ui.screens.ClienteScreen
-import com.example.travelgo.ui.screens.PerfilScreen
+import androidx.navigation.NavHostController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val navController = rememberNavController()
+            AppNav(navController)
             TravelGoTheme {
-                AppNav()
+                AppNav(navController)
                     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                        Greeting(
-                            name = "Android",
+                          Greeting(
+                              name = "Android",
                                 modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -50,7 +50,8 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 }
 @Composable
 fun AppContent() {
-    HomeScreen(navController)
+    val navController = null
+    navController?.let { HomeScreen(it) }
 }
 
 @Preview(showBackground = true)
@@ -62,7 +63,7 @@ fun GreetingPreview() {
 }
 
 @Composable
-fun AppNav() {
+fun AppNav(navController1: NavHostController) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "home") {
