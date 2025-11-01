@@ -5,6 +5,6 @@ import androidx.compose.material.Text
 import androidx.navigation.NavHostController
 
 @Composable
-fun HomeScreen(navController: NavHostController) {
-    Text("Pantalla de inicio")
+fun DetailsScreen(navController: NavHostController) {
+    Text("Detalle")
 }
