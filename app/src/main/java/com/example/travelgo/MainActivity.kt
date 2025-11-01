@@ -19,6 +19,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TravelGoTheme {
+                AppNav()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
@@ -43,5 +44,15 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun GreetingPreview() {
     TravelGoTheme {
         Greeting("Android")
+    }
+}
+
+@Composable
+fun AppNav() {
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "home") {
+        composable("home") { HomeScreen(navController) }
+        composable("details") { DetailsScreen(navController) }
+        // ... otras rutas
     }
 }
