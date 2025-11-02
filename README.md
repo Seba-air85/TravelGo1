@@ -1,6 +1,6 @@
-# <Nombre del Proyecto>
+# Travel Go
 ## 1. Caso elegido y alcance
-**Caso:** <EduTech / EcoMarket / ...>
+**Caso:** Travel Go
 - **Alcance EP3:** Diseño/UI, validaciones, navegación, estado, persistencia, recursos nativos, an
 ## 2. Requisitos y ejecución
 - **Stack:** <framework, librerías>

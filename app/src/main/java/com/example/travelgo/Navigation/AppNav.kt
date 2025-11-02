@@ -19,7 +19,7 @@ import com.example.travelgo.ui.screens.DetailsScreen
 import com.example.travelgo.ui.screens.HomeScreen
 import com.example.travelgo.ui.screens.LoginScreen
 import com.example.travelgo.ui.screens.PaquetesScreen
-import com.example.travelgo.ui.screens.PerfilScreen
+import com.example.travelgo.ui.screens.ProfileScreen
 
 @Composable
 fun AppNav(navController: NavHostController) {
