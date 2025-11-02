@@ -7,56 +7,32 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-
 @Composable
 fun LoginScreen(navController: NavController) {
-
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
-
     var emailError by remember { mutableStateOf(false) }
     var passError by remember { mutableStateOf(false) }
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(24.dp),
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(text = "Bienvenido a Travel-Go", style = MaterialTheme.typography.headlineMedium)
+    // Estado para disparar navegación
+    var navigateToPackages by remember { mutableStateOf(false) }
 
-        Spacer(modifier = Modifier.height(20.dp))
-
-        OutlinedTextField(
+    Column(modifier = Modifier.padding(16.dp)) {
+        TextField(
             value = email,
-            onValueChange = {
-                email = it
-                emailError = false
-            },
+            onValueChange = { email = it },
             label = { Text("Email") },
-            isError = emailError,
-            modifier = Modifier.fillMaxWidth()
+            isError = emailError
         )
-
-        if (emailError) Text("Ingresa un email válido", color = MaterialTheme.colorScheme.error)
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        OutlinedTextField(
+        TextField(
             value = password,
-            onValueChange = {
-                password = it
-                passError = false
-            },
-            label = { Text("Contraseña") },
-            visualTransformation = PasswordVisualTransformation(),
+            onValueChange = { password = it },
+            label = { Text("Password") },
             isError = passError,
-            modifier = Modifier.fillMaxWidth()
+            visualTransformation = PasswordVisualTransformation()
         )
 
-        if (passError) Text("Contraseña debe tener mínimo 6 caracteres", color = MaterialTheme.colorScheme.error)
-
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Button(
             onClick = {
@@ -64,13 +40,20 @@ fun LoginScreen(navController: NavController) {
                 passError = password.length < 6
 
                 if (!emailError && !passError) {
-                    // TODO: luego llamamos API login
-                    navController.navigate("paquetes")
+                    navigateToPackages = true
                 }
             },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Ingresar")
+        }
+    }
+
+    // La navegación se ejecuta desde un Composable válido
+    if (navigateToPackages) {
+        LaunchedEffect(Unit) {
+            navController.navigate("paquetes")
+            navigateToPackages = false
         }
     }
 }
