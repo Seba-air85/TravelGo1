@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.kapt)
 }
 
@@ -20,8 +19,12 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-        
-        buildConfigField("String", "API_BASE_URL", "\"https://x8ki-letl-twmt.n7.xano.io/api:Rfm_61dW\"")
+
+        buildConfigField(
+            "String",
+            "API_BASE_URL",
+            "\"https://x8ki-letl-twmt.n7.xano.io/api:Rfm_61dW\""
+        )
     }
 
     buildTypes {
@@ -33,25 +36,25 @@ android {
             )
         }
     }
-    
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-    
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    
+
     buildFeatures {
         compose = true
         buildConfig = true
     }
-    
+
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.10"
     }
-    
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
